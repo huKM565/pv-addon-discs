@@ -1,4 +1,5 @@
 dependencies {
+    compileOnly("ru.hukm:BigEmerald:1.0-SNAPSHOT")
     compileOnly(libs.paper.v11605)
 
     api(platform(libs.koin.bom))

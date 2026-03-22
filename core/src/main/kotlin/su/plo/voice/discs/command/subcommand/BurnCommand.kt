@@ -32,6 +32,8 @@ import su.plo.voice.discs.utils.extend.render
 import su.plo.voice.discs.utils.extend.sendTranslatable
 import su.plo.voice.discs.utils.extend.suspendSync
 import su.plo.voice.discs.utils.extend.toPlainText
+import ru.hukm.bigEmerald.MoneyOperation;
+import ru.hukm.bigEmerald.MoneyOperation.PaidResult;
 
 class BurnCommand : SubCommand() {
 
@@ -129,6 +131,8 @@ class BurnCommand : SubCommand() {
             )
             return@launch
         }
+
+        if (MoneyOperation.INSTANCE.paid(player, 1) != PaidResult.SUCCESS) return@launch
 
         plugin.suspendSync(player.location) {
             if (Bukkit.getServer().getMinecraftVersionInt() >= 12103) {
